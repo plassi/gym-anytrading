@@ -35,6 +35,9 @@ class ForexEnv(TradingEnv):
         if ((action == Actions.Buy.value and self._position == Positions.Short) or
             (action == Actions.Sell.value and self._position == Positions.Long)):
             trade = True
+            
+        if (action == Actions.Hold.value and self._position == Positions.Hold):
+            step_reward = 0.5
 
         if trade:
             current_price = self.prices[self._current_tick]
