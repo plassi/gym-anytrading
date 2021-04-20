@@ -15,6 +15,7 @@ class Actions(Enum):
 class Positions(Enum):
     Short = 0
     Long = 1
+    Hold = 2
 
     def opposite(self):
         return Positions.Short if self == Positions.Long else Positions.Long
