@@ -47,11 +47,11 @@ class ForexEnv(TradingEnv):
                 step_reward += price_diff * 10000
                 
         if action == Actions.Hold.value and self._position == Positions.Hold:
-            step_reward += 5
+            step_reward += 0.000100
         if action == Actions.Hold.value and self._position == Positions.Short:
-            step_reward += 8
+            step_reward += 0.000100
         if action == Actions.Hold.value and self._position == Positions.Long:
-            step_reward += 10
+            step_reward += 0.000150
 
         return step_reward
 
