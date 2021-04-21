@@ -29,7 +29,7 @@ class ForexEnv(TradingEnv):
 
 
     def _calculate_reward(self, action):
-        step_reward = 10  # pip
+        step_reward = 0  # pip
 
         trade = False
         if ((action == Actions.Buy.value and self._position == Positions.Short) or
@@ -45,6 +45,13 @@ class ForexEnv(TradingEnv):
                 step_reward += -price_diff * 10000
             elif self._position == Positions.Long:
                 step_reward += price_diff * 10000
+                
+        if action == Actions.Hold.value and self._position == Positions.Hold:
+            step_reward += 5
+        if action == Actions.Hold.value and self._position == Positions.Short:
+            step_reward += 8
+        if action == Actions.Hold.value and self._position == Positions.Long:
+            step_reward += 10
 
         return step_reward
 
